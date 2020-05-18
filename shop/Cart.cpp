@@ -13,9 +13,9 @@ void Cart::add(Product* product)
 
 void Cart::remove(const int& pos)
 {
-	if (pos >= 0 && pos < products.getSize())
+	if (pos >= 0 && pos < products.size())
 	{
-		products.remove(pos);
+		products.erase(products.begin() + pos);
 	}
 	else {
 		std::cout << "Wrong position \n";
@@ -24,8 +24,11 @@ void Cart::remove(const int& pos)
 
 void Cart::print() const
 {
-	if (products.getSize() > 0) {
-		std::cout << products << "\n";
+	if (products.size() > 0) {
+		for (auto& i : products) {
+			std::cout << *i << " ";
+		}
+		std::cout << "\n";
 	}
 	else {
 		std::cout << "Cart is empty" << "\n";

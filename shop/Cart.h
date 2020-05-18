@@ -1,11 +1,11 @@
 #ifndef CART_H
 #define CART_H
 #include "Product.h"
-#include "Vector.hpp"
+#include <vector>
 
 class Cart{
 private:
-	Vector<Product*> products;
+	std::vector<Product*> products;
 
 public:
 	Cart() { };

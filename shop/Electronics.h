@@ -1,12 +1,13 @@
 #ifndef ELECTRONICS_H
 #define ELECTRONICS_H
 #include "Product.h"
+#include <string>
 
 class Electronics : public Product
 {
 private:
-	char* model;
-	char* colour;
+	std::string model;
+	std::string colour;
 	double displaySize;
 
 	std::istream& input(std::istream&);
@@ -14,13 +15,10 @@ private:
 
 protected:
 	Electronics(product type = another);
-	Electronics(const Electronics&);
-	Electronics& operator=(const Electronics&);
 
 public:
 	virtual Product* clone() const = 0;
 
-	~Electronics();
 };
 
 #endif

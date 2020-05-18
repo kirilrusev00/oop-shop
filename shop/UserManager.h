@@ -2,11 +2,11 @@
 #define USERMANAGER_H
 #include "User.h"
 #include "Product.h"
-#include "Vector.hpp"
+#include <vector>
 
 class UserManager {
 private:
-	Vector<User> users;
+	std::vector<User> users;
 
 	UserManager() { }
 

@@ -25,8 +25,10 @@ void Cart::remove(const int& pos)
 void Cart::print() const
 {
 	if (products.size() > 0) {
+		int num_el = 0;
 		for (auto& i : products) {
-			std::cout << *i << " ";
+			std::cout << num_el << "\t" << *i << " ";
+			num_el++;
 		}
 		std::cout << "\n";
 	}

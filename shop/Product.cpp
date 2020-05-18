@@ -4,85 +4,9 @@
 Product::Product(Product::product _type) :price(0), inStock(0)
 {
 	type = _type;
-	name = new char[1];
-	name[0] = '\0';
-	description = new char[1];
-	description[0] = '\0';
-	brand = new char[1];
-	brand[0] = '\0';
-}
-
-Product::Product(const Product& rhs) :type(rhs.type), price(rhs.price), inStock(rhs.inStock)
-{
-	int len = strlen(rhs.name);
-	name = new char[len + 1];
-	for (int i = 0; i <= len; i++)
-	{
-		name[i] = rhs.name[i];
-	}
-
-	len = strlen(rhs.description);
-	description = new char[len + 1];
-	for (int i = 0; i <= len; i++)
-	{
-		description[i] = rhs.description[i];
-	}
-
-	len = strlen(rhs.brand);
-	brand = new char[len + 1];
-	for (int i = 0; i <= len; i++)
-	{
-		brand[i] = rhs.brand[i];
-	}
-}
-
-Product& Product::operator=(const Product& rhs)
-{
-	if (this != &rhs)
-	{
-		delete[] name;
-		delete[] description;
-		delete[] brand;
-
-		type = rhs.type;
-		price = rhs.price;
-		inStock = rhs.inStock;
-
-		int len = strlen(rhs.name);
-		name = new char[len + 1];
-		for (int i = 0; i <= len; i++)
-		{
-			name[i] = rhs.name[i];
-		}
-
-		len = strlen(rhs.description);
-		description = new char[len + 1];
-		for (int i = 0; i <= len; i++)
-		{
-			description[i] = rhs.description[i];
-		}
-
-		len = strlen(rhs.brand);
-		brand = new char[len + 1];
-		for (int i = 0; i <= len; i++)
-		{
-			brand[i] = rhs.brand[i];
-		}
-	}
-	return *this;
 }
 
 std::istream& Product::input(std::istream& in) {
-	const int MAX_SIZE = 300; // Default maximum size of dynamic array
-
-	delete[] name;
-	delete[] description;
-	delete[] brand;
-
-	name = new char[MAX_SIZE];
-	description = new char[MAX_SIZE];
-	brand = new char[MAX_SIZE];
-
 	std::cout << "Enter name:";
 	in >> name;
 	std::cout << "Enter description:";
@@ -95,13 +19,6 @@ std::istream& Product::input(std::istream& in) {
 	in >> inStock;
 
 	return in;
-}
-
-Product::~Product()
-{
-	delete[] name;
-	delete[] description;
-	delete[] brand;
 }
 
 std::ostream& operator<<(std::ostream& out, const Product::product& type)

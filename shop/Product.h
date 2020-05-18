@@ -1,6 +1,7 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include <iostream>
+#include <string>
 
 class Product
 {
@@ -15,23 +16,19 @@ public:
 	};
 
 	Product(product type = another);
-	Product(const Product&);
-	Product& operator=(const Product&);
 
 	virtual Product* clone() const = 0;
 
 	const int getInStock() const { return inStock; }
-
-	~Product();
 
 	friend std::istream& operator>>(std::istream&, Product&);
 	friend std::ostream& operator<<(std::ostream&, const Product&);
 
 protected:
 	product type;
-	char* name;
-	char* description;
-	char* brand;
+	std::string name;
+	std::string description;
+	std::string brand;
 	double price;
 	int inStock;
 

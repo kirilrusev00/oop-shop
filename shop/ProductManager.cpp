@@ -45,7 +45,7 @@ void ProductManager::change() {
 	std::cout << "Enter number of product to change:";
 	int pos;
 	std::cin >> pos;
-	if (0 <= pos && pos < products.getSize()) {
+	if (0 <= pos && pos < products.size()) {
 		Product* productToAdd = getNewProduct();
 		if (productToAdd != nullptr) {
 			products[pos] = productToAdd;
@@ -60,9 +60,25 @@ void ProductManager::remove() {
 	std::cout << "Enter number of product to remove:";
 	int pos;
 	std::cin >> pos;
-	products.remove(pos);
+	if (pos >= 0 && pos < products.size())
+	{
+		products.erase(products.begin() + pos);
+	}
+	else {
+		std::cout << "Wrong position \n";
+	}
 }
 
 void ProductManager::print() const {
-	std::cout << products << "\n";
+	if (products.size() > 0) {
+		int num_el = 0;
+		for (auto& i : products) {
+			std::cout << num_el << "\t" << *i << " ";
+			num_el++;
+		}
+		std::cout << "\n";
+	}
+	else {
+		std::cout << "No products to show" << "\n";
+	}
 }

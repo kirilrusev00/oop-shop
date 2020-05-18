@@ -5,11 +5,11 @@
 #include "Shirt.h"
 #include "Sneakers.h"
 #include "TShirt.h"
-#include "Vector.hpp"
+#include <vector>
 
 class ProductManager {
 private:
-	Vector<Product*> products;
+	std::vector<Product*> products;
 
 	ProductManager() { }
 
@@ -20,7 +20,7 @@ public:
 		return instance;
 	}
 
-	const int& getNumProducts() const { return products.getSize(); }
+	const int& getNumProducts() const { return products.size(); }
 	Product* getProduct(const int& pos) const { return products[pos]; }
 
 	void add();

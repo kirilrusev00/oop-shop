@@ -11,22 +11,22 @@ void ProductManager::add() {
 
 Product* ProductManager::getNewProduct() {
 	std::cout << "Enter type of product to add:\n";
-	char* type = new char[20];
+	std::string type;
 	std::cin >> type;
 	Product* p;
-	if (strcmp(type, "laptop") == 0) {
+	if (type.compare("laptop") == 0) {
 		p = new Laptop();
 	}
-	else if (strcmp(type, "phone") == 0) {
+	else if (type.compare("phone") == 0) {
 		p = new Phone();
 	}
-	else if (strcmp(type, "shirt") == 0) {
+	else if (type.compare("shirt") == 0) {
 		p = new Shirt();
 	}
-	else if (strcmp(type, "sneakers") == 0) {
+	else if (type.compare("sneakers") == 0) {
 		p = new Sneakers();
 	}
-	else if (strcmp(type, "tshirt") == 0) {
+	else if (type.compare("tshirt") == 0) {
 		p = new TShirt();
 	}
 	else {
@@ -36,14 +36,12 @@ Product* ProductManager::getNewProduct() {
 	std::cout << "Enter a new product:" << std::endl;
 	std::cin >> *p;
 
-	delete[] type;
-
 	return p;
 }
 
 void ProductManager::change() {
 	std::cout << "Enter number of product to change:";
-	int pos;
+	unsigned int pos;
 	std::cin >> pos;
 	if (0 <= pos && pos < products.size()) {
 		Product* productToAdd = getNewProduct();
@@ -58,7 +56,7 @@ void ProductManager::change() {
 
 void ProductManager::remove() {
 	std::cout << "Enter number of product to remove:";
-	int pos;
+	unsigned int pos;
 	std::cin >> pos;
 	if (pos >= 0 && pos < products.size())
 	{
